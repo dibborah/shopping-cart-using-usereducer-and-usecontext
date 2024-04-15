@@ -1,7 +1,7 @@
 import { useCart } from "../contexts/CartProvider";
 
 const Product = ({ id, title, price, img }) => {
-  const { handleAddToCart } = useCart();
+  const { addItemToCart } = useCart();
   const handleAdd = () => {
     const newCartItem = {
       id: id,
@@ -10,7 +10,7 @@ const Product = ({ id, title, price, img }) => {
       img: img,
       quantity: 1,
     };
-    handleAddToCart(newCartItem);
+    addItemToCart(newCartItem);
   };
   return (
     <div

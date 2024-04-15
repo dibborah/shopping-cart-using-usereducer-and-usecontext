@@ -18,11 +18,11 @@ const initialValue = [];
 
 const CartProvider = ({ children }) => {
   const [cart, dispatch] = useReducer(cartReducer, initialValue);
-  function handleAddToCart(newCartItem) {
+  function addItemToCart(newCartItem) {
     dispatch({ type: "ADD_ITEM", payload: newCartItem });
   }
   return (
-    <CartContext.Provider value={{ cart, handleAddToCart }}>
+    <CartContext.Provider value={{ cart, addItemToCart }}>
       {children}
     </CartContext.Provider>
   );
