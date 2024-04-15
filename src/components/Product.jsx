@@ -1,4 +1,17 @@
+import { useCart } from "../contexts/CartProvider";
+
 const Product = ({ id, title, price, img }) => {
+  const { dispatch } = useCart();
+  const handleAddToCart = () => {
+    const newCartItem = {
+      id: id,
+      title: title,
+      price: price,
+      img: img,
+      quantity: 1,
+    };
+    dispatch({ type: "ADD_ITEM", payload: newCartItem });
+  };
   return (
     <div
       style={{ margin: "1rem", padding: "1rem", border: "2px solid #343434" }}
@@ -7,7 +20,7 @@ const Product = ({ id, title, price, img }) => {
       <img src={img} alt="image not found" height={200} />
       <p>title : {title}</p>
       <p>price: {price}</p>
-      <button>Add to Cart</button>
+      <button onClick={handleAddToCart}>Add to Cart</button>
     </div>
   );
 };
