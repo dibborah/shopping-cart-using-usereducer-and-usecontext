@@ -6,7 +6,7 @@ function cartReducer(cart, action) {
   console.log("cart Reducer called");
   switch (action.type) {
     case "ADD_ITEM": {
-      return [...cart, action.payload]; // doubt in here
+      return [...cart, action.payload];
     }
     default: {
       return cart;
@@ -18,8 +18,11 @@ const initialValue = [];
 
 const CartProvider = ({ children }) => {
   const [cart, dispatch] = useReducer(cartReducer, initialValue);
+  function handleAddToCart(newCartItem) {
+    dispatch({ type: "ADD_ITEM", payload: newCartItem });
+  }
   return (
-    <CartContext.Provider value={{ cart: cart, dispatch: dispatch }}>
+    <CartContext.Provider value={{ cart, handleAddToCart }}>
       {children}
     </CartContext.Provider>
   );
