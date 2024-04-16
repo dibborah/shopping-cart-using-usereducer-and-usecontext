@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import Modal from "../UI/Modal";
-import Cart from "./Cart";
+import Cart from "./Cart"
 
-const header = () => {
+const HeaderElement = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleCloseModal = (value) => {
     setIsModalOpen(value);
@@ -14,6 +14,7 @@ const header = () => {
       document.documentElement.style.overflowY = "scroll";
     }
   }, [isModalOpen]);
+
   return (
     <header>
       <nav>
@@ -29,4 +30,4 @@ const header = () => {
   );
 };
 
-export default header;
+export default HeaderElement;

@@ -1,11 +1,11 @@
+import HeaderElement from "./components/HeaderElement";
 import Products from "./components/Products";
 import CartProvider from "./contexts/CartProvider";
-import Header from "./components/Header";
 
 const App = () => {
   return (
     <CartProvider>
-      <Header />
+      <HeaderElement />
       <Products />
     </CartProvider>
   );
