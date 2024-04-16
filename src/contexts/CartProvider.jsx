@@ -8,26 +8,25 @@ function cartReducer(cart, action) {
       return [...cart, action.payload];
     }
     case "INCREASE_QTY": {
-      return cart.map((item) => {
-        if (item.id === action.payload.id) {
-          return { ...item, quantity: item.quantity + 1 };
-        } else {
+      return cart.map((item)=> {
+        if(item.id === action.payload.id){
+          return {...item, quantity: item.quantity + 1}
+        }else{
           return item;
         }
-      });
+      })
     }
     case "DECREASE_QTY": {
-      return cart.map((item) => {
-        if (item.id === action.payload.id) {
-          return { ...item, quantity: item.quantity - 1 };
-        } else {
+      return cart.map((item)=> {
+        if(item.id === action.payload.id){
+          return {...item, quantity: item.quantity - 1}
+        }else{
           return item;
         }
-      });
+      })
     }
     case "REMOVE_ITEM": {
-      return cart.filter((item) => item.id !== action.payload.id);
-    }
+      return cart.filter((item) => item.id !== action.payload.id);    }
     default: {
       return cart;
     }
@@ -41,23 +40,23 @@ const CartProvider = ({ children }) => {
   function addItemToCart(newCartItem) {
     dispatch({ type: "ADD_ITEM", payload: newCartItem });
   }
-  function increaseQty(id) {
-    dispatch({ type: "INCREASE_QTY", payload: { id: id } });
+  function increaseQuantity(id) {
+    dispatch({ type: "INCREASE_QTY", payload: {id: id} });
   }
-  function decreaseQty(id) {
-    dispatch({ type: "DECREASE_QTY", payload: { id: id } });
+  function decreaseQuantity(id) {
+    dispatch({ type: "DECREASE_QTY", payload: {id: id} });
   }
   function removeItem(id) {
-    dispatch({ type: "REMOVE_ITEM", payload: { id: id } });
+    dispatch({ type: "REMOVE_ITEM", payload: {id: id} });
   }
   return (
     <CartContext.Provider
       value={{
         cart,
         addItemToCart,
-        increaseQty,
-        decreaseQty,
-        removeItem,
+        increaseQuantity,
+        decreaseQuantity,
+        removeItem
       }}
     >
       {children}

@@ -1,11 +1,11 @@
 import { useCart } from "../contexts/CartProvider";
 
 const Product = ({ id, title, price, img }) => {
-  const {cart, addItemToCart } = useCart();
+  const { cart, addItemToCart } = useCart();
   const handleAdd = () => {
-    for(let item of cart){
-      if(item.id === id){
-        alert("Cannot add item!!!");
+    for (let item of cart) {
+      if (item.id === id) {
+        alert("Item already added !!!");
         return;
       }
     }
@@ -17,7 +17,7 @@ const Product = ({ id, title, price, img }) => {
       quantity: 1,
     };
     addItemToCart(newCartItem);
-    alert("Item added successfully !!! ");
+    alert("Item added successfully !!!");
   };
   return (
     <div
